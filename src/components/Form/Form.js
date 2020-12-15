@@ -8,7 +8,10 @@ export default function Form() {
   const dispatch = useDispatch();
   const taskInitialState = { username: '', email: '', text: '' };
   const [task, setTask] = useState(taskInitialState);
-  const [alert, setAlert] = useState({ alertText: '', alertType: '' });
+  const alertInitialState = { alertText: '', alertType: '' }
+  const [alert, setAlert] = useState(alertInitialState);
+
+  const { alertText, alertType } = alert;
 
   const handlerImputChange = event => {
     const target = event.target;
@@ -42,12 +45,15 @@ export default function Form() {
         alertType: 'success',
       });
     }
+    setTimeout(() => {
+      setAlert(alertInitialState)
+    }, 2000);
   };
 
   return (
     <>
-      {alert.alertText && (
-        <Alert text={alert.alertText} type={alert.alertType} />
+      {alertText && (
+        <Alert text={alertText} type={alertType} />
       )}
       <form className={styles.form} onSubmit={submitHandler}>
         <input

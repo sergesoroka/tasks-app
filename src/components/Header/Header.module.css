@@ -1,0 +1,7 @@
+.link__login {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    display: inline-block;
+    color: #fff;
+}
